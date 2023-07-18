@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://gsalierno.github.io/blog/sitemap.xml
+Sitemap: https://gsalierno.github.io/sitemap.xml

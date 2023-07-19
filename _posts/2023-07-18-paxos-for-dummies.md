@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Paxos for dummies
+title:  Paxos for dummies
 date: 2023-07-18 18:07:00-0400
 description: description of one of the most famous algorithms for reaching consensus in distributed systems
 tags: distributed-systems consistency consensus

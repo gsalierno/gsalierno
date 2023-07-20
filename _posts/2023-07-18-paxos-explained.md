@@ -33,7 +33,7 @@ i) The node retains some memory of what happened before it crashed.
 
 ii) The node doesn't remember anything that occurred prior to the failure.
 
-In Paxos, we assume that a node has some memory of events that took place before a failure. For ease of understanding, you can think of this memory as a log. Whenever a node executes an operation, it records the operation it's about to execute in a **italic**log**italic** file. Upon recovery from a failure, a node can read what it executed prior to the failure to resume its operations.
+In Paxos, we assume that a node has some memory of events that took place before a failure. For ease of understanding, you can think of this memory as a log. Whenever a node executes an operation, it records the operation it's about to execute in a **log** file. Upon recovery from a failure, a node can read what it executed prior to the failure to resume its operations.
 
 As you can imagine failures described above make the problem of reaching consesuns hard in a system were failures are not uncommon. Paxos algorithm try to solve the consesus problem with an elegant solution.
 
@@ -42,9 +42,9 @@ For the clarity of the description, in the next sections we refers to processes 
 ## Consensus Problem
 Assume a set of processes are communicating over a network, trying to reach consensus. A process may fail or messages could be delayed due to network congestion. How can we properly define consensus given these constraints? In Paxos, there are two fundamental properties named: *safety* and *liveness*. 
 
-Safety is a correctness property that makes assumptions about the algorithm's behaviour. In particular, for Paxos, we make the following assumption<d-cite key="lamport2001paxos"></d-cite>:
+Safety is a correctness property that makes assumptions about the algorithm's behaviour. In particular, for Paxos, we make the following <d-cite key="lamport2001paxos">assumption</d-cite>:
 
-- Only a value that has been proposed may be chosen
+- Only a single value is chosen
 
 This property states that we cannot have a situation in which, given a set of nodes `$$n$$`, half of them choose a value `$$v_1$$` while the remaining nodes converge on choosing a value `$$v_2$$` such that `$$v_1 != v_2$$`. This property is fundamental to avoid what is called a split-brain scenario. In a split-brain situation, we may have a network partition that does not allow nodes to talk to each other. In this situation, one half of the partition may choose a value while the other half chooses another one.
 

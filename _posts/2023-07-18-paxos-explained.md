@@ -7,6 +7,7 @@ tags: distributed-systems consistency consensus
 categories: distributed-systems
 giscus_comments: true
 related_posts: false
+bibliography: 2023-07-18-paxos-explained.bib
 toc:
   sidebar: left
 ---
@@ -36,9 +37,11 @@ In Paxos, we assume that a node has some memory of events that took place before
 
 As you can imagine failures described above make the problem of reaching consesuns hard in a system were failures are not uncommon. Paxos algorithm try to solve the consesus problem with an elegant solution.
 
-For the clarity of the description, in the next sections we refers to processes as a set of entites communicating over a network trying to reach a consesus on a value.
+For the clarity of the description, in the next sections we refers to processes as a set of entites communicating over a network trying to reach  consensus on a value.
 
 ## Consensus Problem
-Assume a set of processes communicating over a network, trying to reach consensus. Process may fail or messages could be delayed due to network congestion. How we can properly define consensus given these constraints?
+Assume a set of processes communicating over a network, trying to reach consensus. Process may fail or messages could be delayed due to network congestion. How we can properly define consensus given these constraints? In Paxos there are two fundamental properties for defining the problem called: safety and liveness. 
+Safety is a correctness property making some assumption about the algorithm behaviour. In particular in the safety property we make the following assumption<d-cite key="lamport2001paxos"></d-cite>:
 
+1) 
 
